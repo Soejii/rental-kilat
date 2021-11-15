@@ -4,25 +4,25 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daftar customer</title>
+    <title>Daftar karyawan</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
 </head>
 <body>
     <div class="container">
         <div class="card">
             <div class="card-header bg-info">
-                <h4 class="text-white">Daftar Customer</h4>
+                <h4 class="text-white">Daftar Karyawan</h4>
             </div>
             <div class="card-body">
                 <!-- tombol daftar -->
-                <a href="form-customer.php">
+                <a href="form-karyawan.php">
                     <button class="btn btn-outline-success btn-block">
-                     Tambahkan Customer
+                     Tambahkan Karyawan
                     </button>
                 </a>
                 <hr>
-                <!-- kotak pencarian data customer -->
-                <form action="list-customer.php" method="get">
+                <!-- kotak pencarian data -->
+                <form action="list-karyawan.php" method="get">
                     <input type="text" name="search"
                     class="form-control mb-3"
                     placeholder="Masukan Keyword Pencarian">
@@ -31,38 +31,36 @@
                     <?php
                     include("connection.php");
                     if (isset($_GET["search"])) {
+                      
                         $search = $_GET["search"];
-                        $sql = "select * from customer
-                        where id_customer like '%$search%'
-                        or nama_customer like '%$search%'
-                        or tgl_lahir like '%$search%'
+                        $sql = "select * from karyawan
+                        where id_karyawan like '%$search%'
+                        or nama_karyawan like '%$search%'
                         or alamat like '%$search%'
                         or no_hp like '%$search%'";
                     } else {
-                        $sql = "select * from customer";
+                        $sql = "select * from karyawan";
                     }
-                    //eksekusi perintah sql
-                    $query = mysqli_query($connect, $sql);
-                    while($customer = mysqli_fetch_array($query)){ ?>
+
+                    $hasil = mysqli_query($connect, $sql);
+                    while($karyawan = mysqli_fetch_array($hasil)){ ?>
                         <li class="list-group-item">
                         <div class="row">
-                            <!-- bagian data customer-->
-                            <div class="col-lg-10 col-md-10">
-                                <h5>Nama customer : <?php echo $customer["nama_customer"];?></h5>
-                                <h6>ID customer : <?php echo $customer["id_customer"];?></h6>
-                                <h6>Tanggal Lahir : <?php echo $customer["tgl_lahir"];?></h6>
-                                <h6>Alamat : <?php echo $customer["alamat"];?></h6>
-                                <h6>Telepon : <?php echo $customer["no_hp"];?></h6>
+
+                        <div class="col-lg-10 col-md-10">
+                                <h5>Nama karyawan : <?php echo $karyawan["nama_karyawan"];?></h5>
+                                <h6>ID karyawan : <?php echo $karyawan["id_karyawan"];?></h6>
+                                <h6>Telepon : <?php echo $karyawan["no_hp"];?></h6>
                             </div>
 
-                            <!-- bagian tombol pilihan-->
+
                             <div class="col-lg-2 col-md-2">
-                                <a href="form-customer.php?id_customer=<?=$customer["id_customer"]?>">
+                                <a href="form-karyawan.php?id_karyawan=<?=$karyawan["id_karyawan"]?>">
                                     <button class="btn btn-block btn-outline-primary mb-1">
                                         Edit
                                     </button>
                                 </a>
-                                <a href="delete.php?id_customer=<?=$customer["id_customer"]?>">
+                                <a href="delete.php?id_karyawan=<?=$karyawan["id_karyawan"]?>">
                                     <button class="btn btn-block btn-danger"
                                     onclick="return confirm('Apakah anda yakin?')">
                                         Remove

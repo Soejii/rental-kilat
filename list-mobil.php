@@ -32,10 +32,10 @@
                     <?php
                     include "connection.php";
                     if(isset($_GET["search"])) {
-                        $cari = $_GET["search"];
-                        $sql = "select * from mobil where merk like '%$cari%'
-                        or harga_sewa like '%$cari%'
-                        or tahun_pembuatan like '%$cari%'";
+                        $search = $_GET["search"];
+                        $sql = "select * from mobil where merk like '%$search%'
+                        or harga_sewa like '%$search%'
+                        or tahun_pembuatan like '%$search%'";
                     }
                     else {
                         $sql = "select * from mobil";
