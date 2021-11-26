@@ -7,11 +7,14 @@ $id_karyawan = $_POST["id_karyawan"];
 $alamat = $_POST["alamat"];
 $nomor_hp = $_POST["no_hp"];
 $nama_karyawan = $_POST["nama_karyawan"];
+$username = $_POST["username"];
+$password = $_POST["password"];
+
 
 
 // membuat perintah sql untuk insert data ke table karyawan
 
-$sql = "insert into karyawan values ('$id_karyawan','$nama_karyawan','$alamat','$nomor_hp')";
+$sql = "insert into karyawan values ('$id_karyawan','$nama_karyawan','$alamat','$nomor_hp','$username','$password')";
 
 //eksekusi perintah SQL
 mysqli_query($connect, $sql);
@@ -28,8 +31,12 @@ if (isset($_POST["simpan_karyawan"])) {
     $alamat = $_POST["alamat"];
     $no_hp = $_POST["no_hp"];
     $nama_karyawan = $_POST["nama_karyawan"];
+    $username = $_POST["username"];
+$password = $_POST["password"];
+
     #membuat perintah sql update ke table karyawan
-    $sql ="update karyawan set nama_karyawan = '$nama_karyawan', no_hp ='$no_hp', alamat ='$alamat' where id_karyawan = '$id_karyawan' ";
+    $sql ="update karyawan set nama_karyawan = '$nama_karyawan', no_hp ='$no_hp', alamat ='$alamat' where id_karyawan = '$id_karyawan'
+    username = '$username' password ='$password' ";
 
     mysqli_query($connect, $sql);
     header("location:list-karyawan.php");

@@ -70,7 +70,7 @@ elseif (isset($_POST["edit_mobil"])) {
         # proses upload file baru
         if (move_uploaded_file($_FILES["cover"]["tmp_name"], $folder)) {
             $sql = "update mobil set tahun_pembuatan ='$tahun_pembuatan', merk='$merk',
-            jumlah_halaman='$jumlah_halaman',cover='$cover' where nopol='$nopol'";
+            ,cover='$cover' where nopol='$nopol'";
            
 
             if (mysqli_query($connect, $sql)) {
@@ -83,7 +83,7 @@ elseif (isset($_POST["edit_mobil"])) {
     # jika update data 
     else {
         $sql = "update mobil set tahun_pembuatan ='$tahun_pembuatan', merk='$merk',
-                cover='$cover' where nopol='$nopol'";
+                 where nopol='$nopol'";
 
             if (mysqli_query($connect, $sql)) {
                 header("location:list-mobil.php");
